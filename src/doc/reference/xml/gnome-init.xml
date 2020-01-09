@@ -1,0 +1,124 @@
+<refentry id="libgnome-gnome-init">
+<refmeta>
+<refentrytitle role="top_of_page" id="libgnome-gnome-init.top_of_page">gnome-init</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>LIBGNOME Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>gnome-init</refname>
+<refpurpose>Functions used during initialisation of libgnome and other platform libraries.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="libgnome-gnome-init.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+#include &lt;libgnome/libgnome.h&gt;
+
+#define             <link linkend="LIBGNOME-MODULE--CAPS">LIBGNOME_MODULE</link>
+
+const <link linkend="GnomeModuleInfo">GnomeModuleInfo</link> * <link linkend="libgnome-module-info-get">libgnome_module_info_get</link>        (void);
+const <link linkend="GnomeModuleInfo">GnomeModuleInfo</link> * <link linkend="gnome-bonobo-module-info-get">gnome_bonobo_module_info_get</link>    (void);
+
+const <link linkend="char">char</link> *        <link linkend="gnome-user-dir-get">gnome_user_dir_get</link>                  (void);
+const <link linkend="char">char</link> *        <link linkend="gnome-user-private-dir-get">gnome_user_private_dir_get</link>          (void);
+const <link linkend="char">char</link> *        <link linkend="gnome-user-accels-dir-get">gnome_user_accels_dir_get</link>           (void);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="libgnome-gnome-init.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="libgnome-gnome-init.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="LIBGNOME-MODULE--CAPS" role="macro">
+<title>LIBGNOME_MODULE</title>
+<indexterm zone="LIBGNOME-MODULE--CAPS"><primary sortas="LIBGNOME_MODULE">LIBGNOME_MODULE</primary></indexterm><programlisting>#define LIBGNOME_MODULE libgnome_module_info_get()
+</programlisting>
+<para>
+This macro wraps the call to <link linkend="libgnome-module-info-get"><function>libgnome_module_info_get()</function></link> and is the usual way of
+retrieving the <link linkend="GnomeModuleInfo"><type>GnomeModuleInfo</type></link> returned by this function.
+</para></refsect2>
+<refsect2 id="libgnome-module-info-get" role="function">
+<title>libgnome_module_info_get ()</title>
+<indexterm zone="libgnome-module-info-get"><primary sortas="libgnome_module_info_get">libgnome_module_info_get</primary></indexterm><programlisting>const <link linkend="GnomeModuleInfo">GnomeModuleInfo</link> * libgnome_module_info_get        (void);</programlisting>
+<para>
+Retrieves the current libgnome version and the modules it depends on.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a new <link linkend="GnomeModuleInfo"><type>GnomeModuleInfo</type></link> structure describing the version and
+the versions of the dependents.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gnome-bonobo-module-info-get" role="function">
+<title>gnome_bonobo_module_info_get ()</title>
+<indexterm zone="gnome-bonobo-module-info-get"><primary sortas="gnome_bonobo_module_info_get">gnome_bonobo_module_info_get</primary></indexterm><programlisting>const <link linkend="GnomeModuleInfo">GnomeModuleInfo</link> * gnome_bonobo_module_info_get    (void);</programlisting>
+<para>
+Retrieves the bonobo module version and indicate that it requires the current
+libgnome and its dependencies (although libbonobo does not depend on
+libgnome, libbonoboui does and this will also be initialised when
+initialising a GNOME app).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a new <link linkend="GnomeModuleInfo"><type>GnomeModuleInfo</type></link> structure describing the version of the
+bonobo modules and its dependents.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gnome-user-dir-get" role="function">
+<title>gnome_user_dir_get ()</title>
+<indexterm zone="gnome-user-dir-get"><primary sortas="gnome_user_dir_get">gnome_user_dir_get</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gnome_user_dir_get                  (void);</programlisting>
+<para>
+Retrieves the user-specific directory for GNOME apps to use ($HOME/.gnome2
+is the usual GNOME 2 value).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> An absolute path to the directory.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gnome-user-private-dir-get" role="function">
+<title>gnome_user_private_dir_get ()</title>
+<indexterm zone="gnome-user-private-dir-get"><primary sortas="gnome_user_private_dir_get">gnome_user_private_dir_get</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gnome_user_private_dir_get          (void);</programlisting>
+<para>
+Differs from <link linkend="gnome-user-dir-get"><function>gnome_user_dir_get()</function></link> in that the directory returned here will
+have had permissions of 0700 (rwx------) enforced when it was created.  Of
+course, the permissions may have been altered since creation, so care still
+needs to be taken.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> An absolute path to the user-specific private directory that GNOME
+apps can use.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gnome-user-accels-dir-get" role="function">
+<title>gnome_user_accels_dir_get ()</title>
+<indexterm zone="gnome-user-accels-dir-get"><primary sortas="gnome_user_accels_dir_get">gnome_user_accels_dir_get</primary></indexterm><programlisting>const <link linkend="char">char</link> *        gnome_user_accels_dir_get           (void);</programlisting>
+<para>
+Retrieves the user-specific directory that stores the keyboard shortcut files
+for each GNOME app. Note that most applications should be using GConf for
+storing this information, but it may be necessary to use the
+<link linkend="gnome-user-accels-dir-get"><function>gnome_user_accels_dir_get()</function></link> directory for legacy applications.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The absolute path to the directory.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

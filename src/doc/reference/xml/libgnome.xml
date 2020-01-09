@@ -1,0 +1,45 @@
+<refentry id="libgnome-libgnome">
+<refmeta>
+<refentrytitle role="top_of_page" id="libgnome-libgnome.top_of_page">libgnome</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>LIBGNOME Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>libgnome</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="libgnome-libgnome.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+#include &lt;libgnome/libgnome.h&gt;
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="libgnome-libgnome.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="libgnome-libgnome.details" role="details">
+<title role="details.title">Details</title>
+
+</refsect1>
+
+
+
+
+</refentry>
